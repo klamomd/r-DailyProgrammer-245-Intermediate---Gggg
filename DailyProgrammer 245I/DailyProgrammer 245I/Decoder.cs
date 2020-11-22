@@ -8,7 +8,7 @@ namespace DailyProgrammer_245I
 {
     public class Decoder
     {
-        private Dictionary<string, char> alienDictionary = new Dictionary<string, char>();
+        private Dictionary<string, char> alienToHumanDictionary = new Dictionary<string, char>();
         private int maxAlienLetterLength = 0;
 
         // Parameterless constructor should not be used.
@@ -42,7 +42,7 @@ namespace DailyProgrammer_245I
                 if (alienLetter.ToLower().Any(character => character != 'g'))
                     throw new ArgumentException("Invalid key - each KeyValue pair's alien letter should only contain the characters 'g' or 'G'.", nameof(key));
 
-                alienDictionary.Add(alienLetter, humanLetter.First());
+                alienToHumanDictionary.Add(alienLetter, humanLetter.First());
 
                 // Keep track of the longest alien letter for when we decode.
                 if (alienLetter.Length > maxAlienLetterLength)
@@ -74,9 +74,9 @@ namespace DailyProgrammer_245I
                     currentSubstring += currentCharacter;
 
                     // If we have a match, add the corresponding human letter to the decoded string and clear the current substring.
-                    if (alienDictionary.ContainsKey(currentSubstring))
+                    if (alienToHumanDictionary.ContainsKey(currentSubstring))
                     {
-                        decodedString += alienDictionary[currentSubstring];
+                        decodedString += alienToHumanDictionary[currentSubstring];
                         currentSubstring = "";
                     }
                     else

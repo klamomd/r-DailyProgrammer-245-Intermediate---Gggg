@@ -5,7 +5,7 @@ using Xunit;
 
 namespace DailyProgrammer_245I
 {
-    public static class DecoderTests
+    public class DecoderTests
     {
         [Theory]
         [InlineData("H GgG d gGg e ggG l GGg o gGG r Ggg w ggg",
@@ -14,7 +14,7 @@ namespace DailyProgrammer_245I
         [InlineData("a GgG d GggGg e GggGG g GGGgg h GGGgG i GGGGg l GGGGG m ggg o GGg p Gggg r gG y ggG",
             "GGGgGGGgGGggGGgGggG /gG/GggGgGgGGGGGgGGGGGggGGggggGGGgGGGgggGGgGggggggGggGGgG!",
             "hooray /r/dailyprogrammer!")]
-        public static void TestDecoderSuccess(string key, string alienMessage, string expectedResult)
+        public void TestDecoderSuccess(string key, string alienMessage, string expectedResult)
         {
             // Arrange
             Decoder decoder = new Decoder(key);
@@ -33,7 +33,7 @@ namespace DailyProgrammer_245I
         [InlineData("GGGgGggGGGgGGggGG, ggggGGGggGGggGg!")]     // Alien letter exceeding max alien letter size.
         [InlineData("Gg,GggGGGgGGggGG, ggggGGGggGGggGg!")]      // Current substring not empty when non-'g' character is found.
         [InlineData("GgGggGGGgGGggGG, ggggGGGggGGggGg!g")]      // Current substring not empty when end of loop is reached.
-        public static void TestDecoderFailure(string badAlienMessage)
+        public void TestDecoderFailure(string badAlienMessage)
         {
             // Arrange
             string validKey = "H GgG d gGg e ggG l GGg o gGG r Ggg w ggg";
