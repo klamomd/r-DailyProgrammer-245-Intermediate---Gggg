@@ -53,5 +53,7 @@ namespace DailyProgrammer_245I
             Assert.True(decodedSuccessfully);
             Assert.Equal(inputString, decodedString);
         }
+
+        // TODO - I should probably add checks that all the exceptions are throwing correctly, but I added those because I wanted to - not because I need this to be robust, so I don't think I'll spend the time.
     }
 }
