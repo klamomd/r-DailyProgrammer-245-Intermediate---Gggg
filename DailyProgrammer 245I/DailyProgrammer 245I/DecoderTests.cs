@@ -7,15 +7,16 @@ namespace DailyProgrammer_245I
 {
     public static class DecoderTests
     {
-        // TODO - should probably test more than just the valid sample case... but for now I'm doing just the one.
-        [Fact]
-        public static void TestDecoderSuccess()
+        [Theory]
+        [InlineData("H GgG d gGg e ggG l GGg o gGG r Ggg w ggg",
+            "GgGggGGGgGGggGG, ggggGGGggGGggGg!",
+            "Hello, world!")]
+        [InlineData("a GgG d GggGg e GggGG g GGGgg h GGGgG i GGGGg l GGGGG m ggg o GGg p Gggg r gG y ggG",
+            "GGGgGGGgGGggGGgGggG /gG/GggGgGgGGGGGgGGGGGggGGggggGGGgGGGgggGGgGggggggGggGGgG!",
+            "hooray /r/dailyprogrammer!")]
+        public static void TestDecoderSuccess(string key, string alienMessage, string expectedResult)
         {
             // Arrange
-            string key = "H GgG d gGg e ggG l GGg o gGG r Ggg w ggg";
-            string alienMessage = "GgGggGGGgGGggGG, ggggGGGggGGggGg!";
-            string expectedResult = "Hello, world!";
-
             Decoder decoder = new Decoder(key);
 
             // Act
@@ -44,5 +45,7 @@ namespace DailyProgrammer_245I
             // Assert
             Assert.False(didSucceed);
         }
+
+        // TODO - I should probably add checks that all the exceptions are throwing correctly, but I added those because I wanted to - not because I need this to be robust, so I don't think I'll spend the time.
     }
 }
